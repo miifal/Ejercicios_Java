@@ -1,6 +1,6 @@
-//A partir de un array con todos los meses del año escritos en minúscula, crea otro donde solo
-//estén los meses que tienen más de 7 letras y haz que estén escritos en mayúsculas. En otra
-//variable, indica cuántos meses son
+/*A partir de un array con todos los meses del año escritos en minúscula, crea otro donde solo
+estén los meses que tienen más de 7 letras y haz que estén escritos en mayúsculas. En otra
+variable, indica cuántos meses son*/
 
 const meses = ['enero' , 'febrero' , 'marzo', 'abril', 'mayo' , 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
 
