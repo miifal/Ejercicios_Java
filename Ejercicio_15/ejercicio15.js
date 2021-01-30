@@ -23,4 +23,4 @@ const resultado = scores.reduce ((acc, current) => {
     }
 });
 
-console.log ('La ganadora fue ' , resultado.name);
+console.log ('La ganadora fue ' , resultado.name); 
