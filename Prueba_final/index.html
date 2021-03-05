@@ -42,6 +42,7 @@
         "esri/symbols/SimpleFillSymbol",
         "esri/symbols/SimpleLineSymbol",
         "esri/symbols/SimpleMarkerSymbol",
+        "esri/renderers/SimpleRenderer",
         "esri/tasks/IdentifyTask",
         "esri/dijit/Popup",
         "esri/InfoTemplate",
@@ -59,7 +60,7 @@
         function(
           Map,
           on, Extent, ArcGISDynamicMapServiceLayer, Scalebar, Legend, BasemapGallery, Search, OverviewMap, Draw, Geometry, Graphic, 
-          SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, IdentifyTask, Popup, InfoTemplate, FeatureLayer,FeatureTable, Color, Query, graphicsUtils, LayerList,
+          SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, SimpleRenderer, IdentifyTask, Popup, InfoTemplate, FeatureLayer,FeatureTable, Color, Query, graphicsUtils, LayerList, 
           TabContainer, ContentPane, BorderContainer
 
         ) {
@@ -146,7 +147,10 @@
           map : map,
           attachTo : "bottom-left",
           color : "#D81159",
-          visible: true
+          visible: true,
+          width: 250,
+          height:200
+
         });
         overviewMap.startup();
 
@@ -259,19 +263,25 @@
         var template = new InfoTemplate (
           "${state_name}", content );
 
-
-        
-
+       
         var lyrStates = new FeatureLayer("http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2", {
           
           infoTemplate : template,
-          outFields: ["*"]
+          outFields: ["*"],
+          
          
         });
-        
+
+                //el siguiente códico se ha utilizado para cambiar la simboligía de los polígonos de los estados
+
+        var statesColor = new Color("#666");
+        var statesLine = new SimpleLineSymbol("solid", statesColor, 1);
+        var statesSymbol = new SimpleFillSymbol("solid", statesLine, null);
+        var statesRenderer = new SimpleRenderer(statesSymbol);
+        lyrStates.setRenderer(statesRenderer);
         map.addLayer(lyrStates);
         
-        
+        //******************* Se añade un Feature table para visualizar un listado de con los estados
         
         
         map.on("load", function(evt){
