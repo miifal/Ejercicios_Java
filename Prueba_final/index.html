@@ -27,6 +27,7 @@
 
     var map;
     var tb;
+    var tbDraw;
     require(["esri/map",
         "dojo/on", "esri/geometry/Extent",
         "esri/layers/ArcGISDynamicMapServiceLayer",
@@ -160,7 +161,7 @@
         //se crea la funcion fPintaYQuery, se añade la herramienta Draw, se crea ele vento para cuando se haya terminado de dibujar 
     
         function fPintaYQuery(){
-          var tbDraw = new Draw(map);
+          tbDraw = new Draw(map);
           tbDraw.on("draw-end",displayPolygon);
           tbDraw.activate(Draw.POLYGON);
 
@@ -258,6 +259,9 @@
         var template = new InfoTemplate (
           "${state_name}", content );
 
+
+        
+
         var lyrStates = new FeatureLayer("http://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer/2", {
           
           infoTemplate : template,
@@ -288,12 +292,7 @@
       });
 
 
-      
-
-
-
-
-    
+        
         map.on("load",function(evt){
           map.resize();
           map.reposition();
