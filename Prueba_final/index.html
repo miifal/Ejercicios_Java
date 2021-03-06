@@ -238,7 +238,7 @@
         
         on(dojo.byId("progButtonNode"),"click",fQueryEstados);
         
-        var stateSelected = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 255, 0]));
+        var stateSelected = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([255, 0, 0])).setWidth(3);
         
         function fQueryEstados(){
           lyrStates.setSelectionSymbol(stateSelected);
@@ -284,7 +284,7 @@
         //******************* Se añade un Feature table para visualizar un listado de con los estados
         
         
-        map.on("load", function(evt){
+        //map.on("load", function(evt){
         
         var myFeatureTable = new FeatureTable({
             featureLayer : lyrStates,
@@ -299,7 +299,7 @@
             outFields: ["state_name","state_abbr"]
         }, "table");
         myFeatureTable.startup();
-      });
+      
 
 
         
